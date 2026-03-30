@@ -1,14 +1,12 @@
 .tab-active {
-  padding: 14px 24px;
-  background: linear-gradient(to right, #4F39F6, #9514FA);
+  background: linear-gradient(to right, #4f39f6, #9514fa);
   border-radius: 999px;
-  color: #FFFFFF;
+  color: #ffffff;
   font-weight: bold;
 }
 
 .tab-inactive {
-  padding: 14px 24px;
   background: transparent;
-  color: #25065D;
+  color: #25065d;
   font-weight: medium;
 }
