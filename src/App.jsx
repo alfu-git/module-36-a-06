@@ -1,4 +1,5 @@
-import { Suspense } from 'react'
+import { Suspense, useState } from 'react'
+import { ToastContainer, toast } from 'react-toastify';
 import './App.css'
 import Banner from './Components/Banner/Banner'
 import Navbar from './Components/Navbar/Navbar'
@@ -10,14 +11,21 @@ const getToolsData = async () => {
   return fetchToolsData.json();
 }
 
+const toolsDataPromise = getToolsData();
+
 function App() {
-  const toolsDataPromise = getToolsData();
+
+  const [cartList, setCartList] = useState([]);
+
+  const getClickedTool = (tool) => {
+  setCartList([...cartList, tool]);
+}
 
   return (
     <>
 
       <header>
-        <Navbar />
+        <Navbar cartList={cartList} />
       </header>
 
       <main>
@@ -31,9 +39,16 @@ function App() {
             </div>
           )}
         >
-          <ToolsContainer toolsDataPromise={toolsDataPromise} />
+          <ToolsContainer 
+            toolsDataPromise={toolsDataPromise}
+            getClickedTool={getClickedTool}
+            cartList={cartList}
+            setCartList={setCartList}
+          />
         </Suspense>
       </main>
+
+      <ToastContainer />
     </>
   )
 }

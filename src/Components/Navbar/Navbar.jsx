@@ -1,7 +1,7 @@
 import { Menu, ShoppingCart, X } from "lucide-react";
 import React, { useState } from "react";
 
-const Navbar = () => {
+const Navbar = ({ cartList }) => {
   const [status, setStatus] = useState(false);
 
   const handleMenu = () => {
@@ -112,9 +112,17 @@ const Navbar = () => {
           </div>
 
           <div className="flex gap-4 items-center">
-            <span className="text-[#101727]">
-              <ShoppingCart />
-            </span>
+            <div className="relative">
+              <span className="text-[#101727]">
+                <ShoppingCart />
+              </span>
+
+              {cartList.length !== 0 && (
+                <span className="inline-block bg-linear-to-b from-[#4F39F6] to-[#9514FA] px-1 text-base-100 text-sm rounded-full absolute z-50 -top-2 -right-2">
+                  {cartList.length}
+                </span>
+              )}
+            </div>
 
             <div className="hidden md:flex gap-4 items-center">
               <button className="font-semibold opacity-90 cursor-pointer">

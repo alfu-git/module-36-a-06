@@ -1,9 +1,15 @@
 import React, { use, useState } from "react";
 import "./ToolsContainer.css";
 import ToolCard from "./ToolCard/ToolCard";
-import CartImg from "../../assets/products/cart-logo.png"
+import CartImg from "../../assets/products/cart-logo.png";
+import CartList from "./CartList/CartList";
 
-const ToolsContainer = ({toolsDataPromise}) => {
+const ToolsContainer = ({
+  toolsDataPromise,
+  getClickedTool,
+  cartList,
+  setCartList,
+}) => {
   const [tabText, setTabText] = useState("products");
 
   const handleTabBtn = (text) => {
@@ -11,7 +17,6 @@ const ToolsContainer = ({toolsDataPromise}) => {
   };
 
   const toolsData = use(toolsDataPromise);
-  console.log(toolsData);
 
   return (
     <section className="container mx-auto px-5 my-30">
@@ -34,7 +39,7 @@ const ToolsContainer = ({toolsDataPromise}) => {
           <div className="mb-10 flex justify-center">
             <div className="p-1 border border-[#F6F6F6] rounded-full max-w-fit">
               <button
-                onClick={() => handleTabBtn('products')}
+                onClick={() => handleTabBtn("products")}
                 className={`
                   w-30 h-12.5
                   ${tabText === "products" ? "btn tab-active" : "tab-inactive"}
@@ -44,39 +49,59 @@ const ToolsContainer = ({toolsDataPromise}) => {
               </button>
 
               <button
-                onClick={() => handleTabBtn('cart')}
+                onClick={() => handleTabBtn("cart")}
                 className={`
                   w-30 h-12.5
                   ${tabText === "cart" ? "btn tab-active" : "tab-inactive"}
                   `}
               >
                 Cart
-                <span>(0)</span>
+                <span>({cartList.length})</span>
               </button>
             </div>
           </div>
 
           {/* tools */}
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-7.5">
-            {
-              toolsData.map(tool => <ToolCard key={tool.id} tool={tool} />)
-            }
-          </div>
+          {tabText === "products" && (
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-7.5">
+              {toolsData.map((tool) => (
+                <ToolCard
+                  key={tool.id}
+                  tool={tool}
+                  getClickedTool={getClickedTool}
+                  cartList={cartList}
+                />
+              ))}
+            </div>
+          )}
 
           {/* cart */}
-          <div className="p-10 border-2 border-[#F2F2F2] rounded-2xl">
-            <h4 className="mb-6 text-[#101727] text-2xl font-bold">Cart</h4>
+          {tabText === "cart" && (
+            <div className="p-10 border-2 border-[#F2F2F2] rounded-2xl">
+              <h4 className="mb-6 text-[#101727] text-2xl font-bold">Cart</h4>
 
-            {/* empty dashboard */}
-            <div className="my-10">
-              <div className="flex flex-col items-center gap-5">
-                <div className="opacity-30">
-                  <img width={70} src={CartImg} />
+              {/* empty dashboard */}
+              {cartList.length === 0 && (
+                <div className="my-10">
+                  <div className="flex flex-col items-center gap-5">
+                    <div className="opacity-30">
+                      <img width={70} src={CartImg} />
+                    </div>
+                    <p className="text-2xl font-bold opacity-30">
+                      Your cart is empty
+                    </p>
+                  </div>
                 </div>
-                <p className="text-2xl font-bold opacity-30">Your cart is empty</p>
+              )}
+
+              {/* cart list */}
+              <div className="grid grid-cols-1 gap-4">
+                {cartList.map((list, index) => (
+                  <CartList key={index} list={list} />
+                ))}
               </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </section>

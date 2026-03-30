@@ -1,11 +1,34 @@
 import { Check } from "lucide-react";
 import React from "react";
+import { toast } from "react-toastify";
 
-const ToolCard = ({ tool }) => {
+const ToolCard = ({ tool, getClickedTool, cartList }) => {
+
+  const isExists = cartList.find(list => list.name === tool.name);
+
+  const handleBuyBtn = (tool) => {
+    if (!isExists) {
+      getClickedTool(tool);
+
+      toast.success(
+        <p className="flex gap-1.5 text-sm">
+          <span
+            className="bg-linear-to-r from-[#4F39F6] to-[#9514FA] bg-clip-text text-transparent font-bold"
+          >
+            {tool.name}
+          </span>
+          <span>
+            added to cart
+          </span>
+        </p>
+      )
+    }
+  }
+
   return (
     <div className="p-6 bg-base-100 border-2 border-[#F2F2F2] rounded-2xl relative">
       <div className="space-y-4">
-        <div className="">
+        <div>
           <div className="p-3.5 border border-[#F2F2F2] rounded-full max-w-fit">
             <img width={32} src={tool.icon} />
           </div>
@@ -51,12 +74,18 @@ const ToolCard = ({ tool }) => {
         </div>
 
         <button
+          onClick={() => handleBuyBtn(tool)}
           className={`
-            btn bg-linear-to-r from-[#4F39F6] to-[#9514FA] border-none rounded-full w-full h-13 text-base-100 font-bold
+            btn border-none rounded-full w-full h-13 text-base-100 font-bold
+            ${
+              isExists ? "bg-green-600" : "bg-linear-to-r from-[#4F39F6] to-[#9514FA]"
+            }
             `}
         >
-          Buy Now
-          </button>
+          {
+            isExists ? 'Added to cart!' : 'Buy Now'
+          }
+        </button>
       </div>
     </div>
   );
