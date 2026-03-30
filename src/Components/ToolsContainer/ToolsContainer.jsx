@@ -1,6 +1,7 @@
 import React, { use, useState } from "react";
 import "./ToolsContainer.css";
 import ToolCard from "./ToolCard/ToolCard";
+import CartImg from "../../assets/products/cart-logo.png"
 
 const ToolsContainer = ({toolsDataPromise}) => {
   const [tabText, setTabText] = useState("products");
@@ -60,6 +61,21 @@ const ToolsContainer = ({toolsDataPromise}) => {
             {
               toolsData.map(tool => <ToolCard key={tool.id} tool={tool} />)
             }
+          </div>
+
+          {/* cart */}
+          <div className="p-10 border-2 border-[#F2F2F2] rounded-2xl">
+            <h4 className="mb-6 text-[#101727] text-2xl font-bold">Cart</h4>
+
+            {/* empty dashboard */}
+            <div className="my-10">
+              <div className="flex flex-col items-center gap-5">
+                <div className="opacity-30">
+                  <img width={70} src={CartImg} />
+                </div>
+                <p className="text-2xl font-bold opacity-30">Your cart is empty</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
