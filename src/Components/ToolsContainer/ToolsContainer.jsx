@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import "./ToolsContainer.css";
+import ToolCard from "./ToolCard/ToolCard";
 
-const ToolsContainer = () => {
+const ToolsContainer = ({toolsDataPromise}) => {
   const [tabText, setTabText] = useState("products");
 
   const handleTabBtn = (text) => {
     setTabText(text);
   };
+
+  const toolsData = use(toolsDataPromise);
+  console.log(toolsData);
 
   return (
     <section className="container mx-auto px-5 my-30">
@@ -26,7 +30,7 @@ const ToolsContainer = () => {
           </div>
 
           {/* tab btn */}
-          <div className="flex justify-center">
+          <div className="mb-10 flex justify-center">
             <div className="p-1 border border-[#F6F6F6] rounded-full max-w-fit">
               <button
                 onClick={() => handleTabBtn('products')}
@@ -49,6 +53,13 @@ const ToolsContainer = () => {
                 <span>(0)</span>
               </button>
             </div>
+          </div>
+
+          {/* tools */}
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-7.5">
+            {
+              toolsData.map(tool => <ToolCard key={tool.id} tool={tool} />)
+            }
           </div>
         </div>
       </div>
