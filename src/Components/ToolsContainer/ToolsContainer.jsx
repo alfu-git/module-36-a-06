@@ -102,22 +102,29 @@ const ToolsContainer = ({
                 {cartList.map((list, index) => (
                   <CartList 
                     key={index} 
-                    list={list}
+                    list={list} 
+                    cartList={cartList}
+                    setCartList={setCartList}
                     total={total}
+                    setTotal={setTotal}
                   />
                 ))}
               </div>
 
               {/* proceed to checkout */}
-              <div className="mt-6">
-                <div className="mb-7 flex justify-between items-center">
-                <span className="text-[#627382]">Total:</span>
-                <span className="text-[#101727 text-2xl font-bold]">${total}</span>
+              {cartList.length !== 0 && (
+                <div className="mt-6">
+                  <div className="mb-7 flex justify-between items-center">
+                    <span className="text-[#627382]">Total:</span>
+                    <span className="text-[#101727] text-2xl font-bold">
+                      ${total}
+                    </span>
+                  </div>
+                  <button className="btn w-full h-13 bg-linear-to-r from-[#4F39F6] to-[#9514FA] border-none rounded-full text-base-100 font-bold">
+                    Proceed To Checkout
+                  </button>
                 </div>
-                <button className="btn w-full h-13 bg-linear-to-r from-[#4F39F6] to-[#9514FA] border-none rounded-full text-base-100 font-bold">
-                  Proceed To Checkout
-                </button>
-              </div>
+              )}
             </div>
           )}
         </div>

@@ -28,10 +28,10 @@ const ToolCard = ({ tool, getClickedTool, cartList, total, setTotal }) => {
   }
 
   return (
-    <div className="p-6 bg-base-100 border-2 border-[#F2F2F2] rounded-2xl relative hover:-translate-y-2 hover:border-zinc-200 transition-all duration-300 ease-in-out">
+    <div className="p-6 bg-base-100 border-2 border-[#F2F2F2] rounded-2xl relative hover:-translate-y-2 hover:border-zinc-200 transition-all duration-300 ease-in-out group">
       <div className="space-y-4">
         <div>
-          <div className="p-3.5 border border-[#F2F2F2] rounded-full max-w-fit">
+          <div className="p-3.5 border border-[#F2F2F2] group-hover:border-[#9514FA] rounded-full max-w-fit">
             <img width={32} src={tool.icon} />
           </div>
 
