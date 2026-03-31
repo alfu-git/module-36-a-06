@@ -9,7 +9,7 @@ const Navbar = ({ cartList }) => {
   };
 
   return (
-    <section className="container mx-auto px-5 py-3 md:px-6 border-b border-[#F2F2F2]">
+    <section className="container mx-auto px-5 py-3 md:px-6 border-b border-[#F2F2F2] shadow">
       <div>
         <div className="flex gap-5 justify-between items-center">
           <div className="flex gap-4 items-center">

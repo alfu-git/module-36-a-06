@@ -28,7 +28,7 @@ function App() {
   return (
     <>
 
-      <header>
+      <header className='sticky z-90 top-0 bg-base-100'>
         <Navbar cartList={cartList} />
       </header>
 
@@ -60,7 +60,10 @@ function App() {
         <Footer />
       </footer>
 
-      <ToastContainer />
+      <ToastContainer
+        position='top-right'
+        style={{top: '65px'}}
+      />
     </>
   )
 }
