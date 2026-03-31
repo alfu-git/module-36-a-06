@@ -41,6 +41,7 @@ const Navbar = ({ cartList }) => {
                     Products
                   </a>
                 </li>
+
                 <li>
                   <a
                     className="text-base-100 text-sm font-semibold opacity-90"
@@ -49,6 +50,7 @@ const Navbar = ({ cartList }) => {
                     Features
                   </a>
                 </li>
+
                 <li>
                   <a
                     className="text-base-100 text-sm font-semibold opacity-90"
@@ -57,6 +59,7 @@ const Navbar = ({ cartList }) => {
                     Pricing
                   </a>
                 </li>
+
                 <li>
                   <a
                     className="text-base-100 text-sm font-semibold opacity-90"
@@ -65,6 +68,7 @@ const Navbar = ({ cartList }) => {
                     Testimonials
                   </a>
                 </li>
+
                 <li>
                   <a
                     className="text-base-100 text-sm font-semibold opacity-90"
@@ -88,21 +92,25 @@ const Navbar = ({ cartList }) => {
                   Products
                 </a>
               </li>
+
               <li>
                 <a className="text-[#101727] font-semibold opacity-90" href="/">
                   Features
                 </a>
               </li>
+
               <li>
                 <a className="text-[#101727] font-semibold opacity-90" href="/">
                   Pricing
                 </a>
               </li>
+
               <li>
                 <a className="text-[#101727] font-semibold opacity-90" href="/">
                   Testimonials
                 </a>
               </li>
+
               <li>
                 <a className="text-[#101727] font-semibold opacity-90" href="/">
                   FAQ
@@ -118,8 +126,10 @@ const Navbar = ({ cartList }) => {
               </span>
 
               {cartList.length !== 0 && (
-                <span className="inline-block bg-linear-to-b from-[#4F39F6] to-[#9514FA] px-1 text-base-100 text-sm rounded-full absolute z-50 -top-2 -right-2">
-                  {cartList.length}
+                <span className="w-5 h-5 bg-linear-to-b from-[#4F39F6] to-[#9514FA] px-1 rounded-full flex justify-center items-center absolute z-50 -top-2 -right-2">
+                  <span className="text-base-100 text-sm">
+                    {cartList.length}
+                  </span>
                 </span>
               )}
             </div>
