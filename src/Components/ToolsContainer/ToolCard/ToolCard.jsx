@@ -2,13 +2,15 @@ import { Check } from "lucide-react";
 import React from "react";
 import { toast } from "react-toastify";
 
-const ToolCard = ({ tool, getClickedTool, cartList }) => {
+const ToolCard = ({ tool, getClickedTool, cartList, total, setTotal }) => {
 
   const isExists = cartList.find(list => list.name === tool.name);
 
   const handleBuyBtn = (tool) => {
     if (!isExists) {
       getClickedTool(tool);
+
+      setTotal(total + tool.price);
 
       toast.success(
         <p className="flex gap-1.5 text-sm">
@@ -26,7 +28,7 @@ const ToolCard = ({ tool, getClickedTool, cartList }) => {
   }
 
   return (
-    <div className="p-6 bg-base-100 border-2 border-[#F2F2F2] rounded-2xl relative">
+    <div className="p-6 bg-base-100 border-2 border-[#F2F2F2] rounded-2xl relative hover:-translate-y-2 hover:border-zinc-200 transition-all duration-300 ease-in-out">
       <div className="space-y-4">
         <div>
           <div className="p-3.5 border border-[#F2F2F2] rounded-full max-w-fit">
@@ -55,7 +57,11 @@ const ToolCard = ({ tool, getClickedTool, cartList }) => {
           <span className="text-[#101727] text-2xl font-bold">
             ${tool.price}
           </span>
-          <span className="text-#627382">/{tool.period}</span>
+          <span className="text-[#627382]">/
+            {
+              tool.period === 'monthly' ? 'Mo' : 'One-time'
+            }
+          </span>
         </div>
 
         <div>

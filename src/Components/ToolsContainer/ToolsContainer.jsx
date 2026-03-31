@@ -11,6 +11,7 @@ const ToolsContainer = ({
   setCartList,
 }) => {
   const [tabText, setTabText] = useState("products");
+  const [total, setTotal] = useState(0);
 
   const handleTabBtn = (text) => {
     setTabText(text);
@@ -70,6 +71,8 @@ const ToolsContainer = ({
                   tool={tool}
                   getClickedTool={getClickedTool}
                   cartList={cartList}
+                  total={total}
+                  setTotal={setTotal}
                 />
               ))}
             </div>
@@ -97,8 +100,23 @@ const ToolsContainer = ({
               {/* cart list */}
               <div className="grid grid-cols-1 gap-4">
                 {cartList.map((list, index) => (
-                  <CartList key={index} list={list} />
+                  <CartList 
+                    key={index} 
+                    list={list}
+                    total={total}
+                  />
                 ))}
+              </div>
+
+              {/* proceed to checkout */}
+              <div className="mt-6">
+                <div className="mb-7 flex justify-between items-center">
+                <span className="text-[#627382]">Total:</span>
+                <span className="text-[#101727 text-2xl font-bold]">${total}</span>
+                </div>
+                <button className="btn w-full h-13 bg-linear-to-r from-[#4F39F6] to-[#9514FA] border-none rounded-full text-base-100 font-bold">
+                  Proceed To Checkout
+                </button>
               </div>
             </div>
           )}

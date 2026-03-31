@@ -3,7 +3,7 @@ import React from 'react';
 const CartList = ({list}) => {
 
   return (
-    <div className='p-5 bg-[#F9FAFC] rounded-2xl'>
+    <div className='p-5 bg-[#F9FAFC] rounded-2xl shadow hover:scale-103 hover:border-zinc-200 transition-all duration-300 ease-in-out'>
       <div className='flex justify-between items-center'>
         <div className='flex gap-4 items-center'>
           <div className='p-3.5 border border-[#F2F2F2] rounded-full'>
