@@ -11,7 +11,7 @@ import WorkFlow from './Components/WorkFlow/WorkFlow';
 import Footer from './Components/Footer/Footer';
 
 const getToolsData = async () => {
-  const fetchToolsData = await fetch("../public/toolsData.json");
+  const fetchToolsData = await fetch("/toolsData.json");
   return fetchToolsData.json();
 }
 
