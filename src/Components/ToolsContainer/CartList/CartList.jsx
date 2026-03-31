@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 
 const CartList = ({ list, cartList, setCartList, total, setTotal }) => {
   const handleRemoveBtn = (list) => {
+
     const removeItem = cartList.filter((li) => li.name !== list.name);
     setCartList(removeItem);
     setTotal(total - list.price);
@@ -18,10 +19,10 @@ const CartList = ({ list, cartList, setCartList, total, setTotal }) => {
   };
 
   return (
-    <div className="p-5 bg-[#F9FAFC] rounded-2xl shadow hover:scale-103 hover:border-zinc-200 transition-all duration-300 ease-in-out">
-      <div className="flex justify-between items-center">
-        <div className="flex gap-4 items-center">
-          <div className="p-3.5 border border-[#F2F2F2] rounded-full">
+    <div className="p-3 md:p-5 bg-[#F9FAFC] rounded-2xl shadow hover:scale-103 hover:border-zinc-200 transition-all duration-300 ease-in-out group">
+      <div className="flex justify-between md:items-center">
+        <div className="flex gap-4 md:items-center flex-col md:flex-row">
+          <div className="p-3.5 border border-[#F2F2F2] group-hover:border-[#9514FA] max-w-fit rounded-full">
             <img width={32} src={list.icon} />
           </div>
 

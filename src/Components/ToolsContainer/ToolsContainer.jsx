@@ -3,6 +3,7 @@ import "./ToolsContainer.css";
 import ToolCard from "./ToolCard/ToolCard";
 import CartImg from "../../assets/products/cart-logo.png";
 import CartList from "./CartList/CartList";
+import { toast } from "react-toastify";
 
 const ToolsContainer = ({
   toolsDataPromise,
@@ -16,6 +17,12 @@ const ToolsContainer = ({
   const handleTabBtn = (text) => {
     setTabText(text);
   };
+
+  const handleCheckoutBtn = () => {
+    setCartList([]);
+
+    toast.warning("Cart is clear");
+  }
 
   const toolsData = use(toolsDataPromise);
 
@@ -80,7 +87,7 @@ const ToolsContainer = ({
 
           {/* cart */}
           {tabText === "cart" && (
-            <div className="p-10 border-2 border-[#F2F2F2] rounded-2xl">
+            <div className="p-4 sm:p-10 border-2 border-[#F2F2F2] rounded-2xl">
               <h4 className="mb-6 text-[#101727] text-2xl font-bold">Cart</h4>
 
               {/* empty dashboard */}
@@ -120,7 +127,10 @@ const ToolsContainer = ({
                       ${total}
                     </span>
                   </div>
-                  <button className="btn w-full h-13 bg-linear-to-r from-[#4F39F6] to-[#9514FA] border-none rounded-full text-base-100 font-bold">
+                  <button
+                    onClick={handleCheckoutBtn}
+                    className="btn w-full h-13 bg-linear-to-r from-[#4F39F6] to-[#9514FA] border-none rounded-full text-base-100 font-bold"
+                  >
                     Proceed To Checkout
                   </button>
                 </div>
