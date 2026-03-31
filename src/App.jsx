@@ -6,6 +6,7 @@ import Navbar from './Components/Navbar/Navbar'
 import Stats from './Components/Stats/Stats'
 import ToolsContainer from './Components/ToolsContainer/ToolsContainer'
 import Steps from './Components/Steps/Steps';
+import Pricing from './Components/Pricing/Pricing';
 
 const getToolsData = async () => {
   const fetchToolsData = await fetch("../public/toolsData.json");
@@ -49,6 +50,7 @@ function App() {
         </Suspense>
 
         <Steps />
+        <Pricing />
       </main>
 
       <ToastContainer />
