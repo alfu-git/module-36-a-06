@@ -1,16 +1,22 @@
-# React + Vite
+# 🚀 DigiTools Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📌 Description
+DigiTools Platform is a modern digital tools marketplace where users can explore and purchase various useful resources like AI tools, design assets, and productivity kits. This project provides a smooth and interactive user experience with dynamic cart management and real-time updates.
 
-Currently, two official plugins are available:
+## 🛠️ Technologies Used
+- React
+- Tailwind CSS
+- DaisyUI
+- JavaScript (ES6+)
+- React-Toastify (NPM Package)
+- JSON (for product data)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Features
+- 🛒 **Dynamic Cart System**  
+  Users can add items to the cart by clicking the "Buy Now" button, which instantly updates to "Added to Cart" and shows a toast notification.
 
-## React Compiler
+- 📊 **Real-time Cart Management**  
+  Cart automatically updates item count, total price, and removes the empty message when items are added. It also shows item count in the navbar icon.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- ❌ **Item Remove & Checkout System**  
+  Users can remove items individually with notifications, and the "Proceed to Checkout" button clears the entire cart with a confirmation toast.
